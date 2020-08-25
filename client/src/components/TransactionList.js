@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { Transaction } from "./Transaction";
 
 export const TransactionList = () => {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions, getTransactions } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getTransactions();
+  }, []);
 
   return (
     <>
@@ -14,7 +18,7 @@ export const TransactionList = () => {
             text={transactions.text}
             amount={transactions.amount}
             key={transactions.id}
-            id={transactions.id}
+            _id={transactions._id}
           />
         ))}
       </ul>

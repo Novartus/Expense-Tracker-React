@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
-export const Transaction = ({ id, text, amount }) => {
+export const Transaction = ({ _id, text, amount }) => {
   const { deleteTransaction } = useContext(GlobalContext);
 
   const sign = amount < 0 ? "-" : "+";
@@ -12,7 +12,7 @@ export const Transaction = ({ id, text, amount }) => {
       <span>
         {sign}${Math.abs(amount)}
       </span>
-      <button onClick={() => deleteTransaction(id)} className="delete-btn">
+      <button onClick={() => deleteTransaction(_id)} className="delete-btn">
         x
       </button>
     </li>
